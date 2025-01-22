@@ -1,20 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = process.env.PORT||3001
-require('dotenv').config()
+const PORT = process.env.PORT || 3001;
+require('dotenv').config();
 
-const app = express()
+const app = express();
 
+app.use(cors());
+app.use(express.json());
 
-app.use(cors())
-app.use(express.json())
-
-mongoose.connect('mongodb://localhost:27017',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/RZA', {})
+  .then(() => console.log('Database connected!'))
+  .catch((error) => console.error('connection error:', error));
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -26,13 +24,18 @@ db.once('open', () => {
 const Booking = require('./models/bookingSchema.models');
 
 // Create a route to handle form submissions
-app.post('/api/bookings', async (req, res) => {
-  const { name, email, event, checkInDate, checkOutDate } = req.body;
+app.post('/api/bookingsHotel', async (req, res) => {
+  const { forename, surname, people, checkInDate, checkOutDate } = req.body;
+
+  // Validate incoming data
+  if (!forename || !surname || !people || !checkInDate || !checkOutDate) {
+    return res.status(400).json({ message: 'All fields are required!' });
+  }
 
   const newBooking = new Booking({
-    name,
-    email,
-    event,
+    forename,
+    surname,
+    people,
     checkInDate,
     checkOutDate
   });
@@ -45,16 +48,12 @@ app.post('/api/bookings', async (req, res) => {
   }
 });
 
-var usersRouter = require('./routes/authUser')
+// Router for users
+var usersRouter = require('./routes/authUser');
+app.use('/users', usersRouter);
 
-
-app.use('/users',usersRouter)
-
-
-
-app.listen(PORT, ()=>{
-    console.log(`Listening on port ${PORT}`)
-})
-
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
 
 module.exports = app;

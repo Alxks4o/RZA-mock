@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema({
-    name: {
+    forename: {
         type: String,
         required:true
     },
-    email: {
+    surname: {
         type:String,
         required:true
     },
@@ -14,11 +14,11 @@ const bookingSchema = new mongoose.Schema({
         required:true
     },
     checkInDate: {
-        type:Date,
+        type:String,
         required:true
     },
     checkOutDate: {
-        type:Date,
+        type:String,
         required:true
     }
 });

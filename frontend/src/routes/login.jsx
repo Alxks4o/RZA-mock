@@ -26,7 +26,7 @@ export default function Login(){
         var password = inputs.password;
 
         axios
-        .post('http://127.0.0.1:3000/users/login',{
+        .post('http://127.0.0.1:3001/users/login',{
             email:email, password:password
         }).then((res) =>{
             console.log(res)

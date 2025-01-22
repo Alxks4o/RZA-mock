@@ -9,14 +9,14 @@
 
   .custom-nav {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     gap: 15px; /* Adjust the gap between links */
   }
   
   .custom-nav .nav-link {
     color: #000000; /* Black text color */
     padding: 10px;
-    float: inline-end;
+    float: right;
     padding-right: 16px;
     font-size: 1.25rem;
     font-weight: bold;
@@ -27,3 +27,4 @@
       justify-content: flex-end;
     }
   }
+

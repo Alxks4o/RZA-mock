@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'js-cookie'
-import { Navbar, Nav, Container} from 'react-bootstrap';
+import { Navbar, Nav} from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../assets/styles.css'
 
 function NavbarComponent() {
 
@@ -15,13 +14,12 @@ function NavbarComponent() {
 
   useEffect(() => {
       var user = Cookies.get('token');
-      var site = Cookies.get('site');
 
       if(user === undefined){
           navigate('/login')
       }else{
               axios
-              .get('http://127.0.0.1:3000/users/'+user+'/email')
+              .get('http://127.0.0.1:3001/users/'+user+'/email')
               .then((res) => {
                   setUser(res.data);
                   setisLoaded(true)
@@ -31,12 +29,12 @@ function NavbarComponent() {
               })
           }
       
-  },[])
+  },[navigate])
   
 
     return (
       <Navbar expand="lg">        
-        <Navbar.Brand href="/">Riget Zoo Adventures</Navbar.Brand>
+        <Navbar.Brand style={{marginLeft:'45px'}} href="/">Riget Zoo Adventures</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto custom-nav" >
