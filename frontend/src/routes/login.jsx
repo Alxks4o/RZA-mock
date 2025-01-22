@@ -26,7 +26,7 @@ export default function Login(){
         var password = inputs.password;
 
         axios
-        .post('mongodb://localhost:27017/users/login',{
+        .post('http://127.0.0.1:3000/users/login',{
             email:email, password:password
         }).then((res) =>{
             console.log(res)
@@ -50,7 +50,6 @@ export default function Login(){
     
     return(
         <>
-        <div className='d-flex align-items-center justify-content-center vh-100'>
             <Container>
                 <Row>
                     <Col xs='2'></Col>
@@ -87,7 +86,6 @@ export default function Login(){
                     <Col xs='2'></Col>
                 </Row>
             </Container>
-            </div>
         </>
     )
 }

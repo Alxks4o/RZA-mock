@@ -1,0 +1,29 @@
+/* styles.css */
+.custom-background {
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+  }
+
+  .custom-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Adjust the gap between links */
+  }
+  
+  .custom-nav .nav-link {
+    color: #000000; /* Black text color */
+    padding: 10px;
+    float: inline-end;
+    padding-right: 16px;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 991px) {
+    .custom-nav {
+      justify-content: flex-end;
+    }
+  }

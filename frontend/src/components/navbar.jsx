@@ -1,29 +1,63 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import React, { useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'js-cookie'
+import { Navbar, Nav, Container} from 'react-bootstrap';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../assets/styles.css'
 
-function NavbarComp() {
-  return (
-    <>
-    {[false, 'sm', 'md', 'lg', 'xl', 'xxl'].map((expand) => (
-         <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
-          <Container fluid>
-            <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas
-              id={`offcanvasNavbar-expand-${expand}`}
-              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-    ))}
-   
-    </>
-  )
-};
+function NavbarComponent() {
 
-export default Navbar;
+  const [isLoaded, setisLoaded] = useState(false)
+  const [user, setUser] = useState("")
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      var user = Cookies.get('token');
+      var site = Cookies.get('site');
+
+      if(user === undefined){
+          navigate('/login')
+      }else{
+              axios
+              .get('http://127.0.0.1:3000/users/'+user+'/email')
+              .then((res) => {
+                  setUser(res.data);
+                  setisLoaded(true)
+              })
+              .catch((err) =>{
+                  navigate('/login');
+              })
+          }
+      
+  },[])
+  
+
+    return (
+      <Navbar expand="lg">        
+        <Navbar.Brand href="/">Riget Zoo Adventures</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mx-auto custom-nav" >
+            <Nav.Item>
+              <Nav.Link href="#about">About us</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/bookingszoo">Zoo Tickets</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/bookingshotel">Hotel Tickets</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/logout">Log out</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
+
+  
+export default NavbarComponent;
+  

@@ -1,17 +1,19 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../assets/styles.css'
 import NavbarComp from '../components/navbar'
 
 
-const Homepage = () => {
+const Homepage = () => { 
+
   return (
     <>
         <NavbarComp/>
-        <div>
-        <h1>Hello from home</h1>
-        </div>
+       <div className='custom-background'>
+       </div>
     </>
   )
 }
+
 
 export default Homepage
