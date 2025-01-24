@@ -39,13 +39,16 @@ function NavbarComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto custom-nav" >
             <Nav.Item>
-              <Nav.Link href="#about">About us</Nav.Link>
+              <Nav.Link href="/aboutus">About us</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="/bookingszoo">Zoo Tickets</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/bookingshotel">Hotel Tickets</Nav.Link>
+              <Nav.Link href="/bookingshotel">Hotel Booking</Nav.Link>
+            </Nav.Item>   
+            <Nav.Item>
+              <Nav.Link href="/viewbookings">View Bookings</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="/logout">Log out</Nav.Link>

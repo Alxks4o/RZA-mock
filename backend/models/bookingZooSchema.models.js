@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const bookingSchema = new mongoose.Schema({
+const bookingZooSchema = new mongoose.Schema({
     forename: {
         type: String,
         required:true
@@ -9,20 +9,24 @@ const bookingSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    people: {
+    adults:{
         type:Number,
         required:true
     },
-    checkInDate: {
+    children:{
+        type:Number,
+        required:true
+    },
+    date: {
         type:String,
         required:true
     },
-    checkOutDate: {
+    user: {
         type:String,
         required:true
     }
 });
 
-const Booking = mongoose.model('Booking', bookingSchema);
+const BookingZoo = mongoose.model('BookingZoo', bookingZooSchema);
 
-module.exports = Booking;
+module.exports = BookingZoo;

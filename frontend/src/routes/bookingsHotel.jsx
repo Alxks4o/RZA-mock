@@ -4,15 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from '../components/navbar';
 import '../assets/styles.css'
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function BookingsHotel() {
+  const userid = Cookies.get('token');
 
   const [formData, setFormData] = useState({
     forename: '',
     surname: '',
     people: 0,
     checkInDate: '',
-    checkOutDate: ''
+    checkOutDate: '',
+    user:''
   });
   
   
@@ -40,9 +43,9 @@ function BookingsHotel() {
         ...formData,
         people: Number(formData.people), // Convert to number
         checkInDate: new Date(formData.checkInDate),
-        checkOutDate: new Date(formData.checkOutDate)
+        checkOutDate: new Date(formData.checkOutDate),
+        user: userid 
       };
-      console.log('Form Data before submission:', convertedData);
       
       try {
         const response = await axios.post('http://localhost:3001/api/bookingsHotel', convertedData, {

@@ -11,6 +11,8 @@ import Homepage from './routes/homepage'
 import Logout from './routes/logout'
 import BookingsZoo from './routes/bookingsZoo'
 import BookingsHotel from './routes/bookingsHotel'
+import Bookings from './routes/bookings'
+import About from './routes/about'
 
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: '/bookingshotel',
     element: <BookingsHotel/>
+  },
+  {
+    path:'/viewbookings',
+    element: <Bookings/>
+  },
+  {
+    path:'/aboutus',
+    element: <About/>
   }
 ])
 
