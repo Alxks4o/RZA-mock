@@ -22,10 +22,11 @@ db.once('open', () => {
 
 // Import the Booking model
 const BookingHotel = require('./models/bookingHotelSchema.models');
+const BookingZoo = require('./models/bookingZooSchema.models');
 
 // Create a route to handle form submissions
 app.post('/api/bookingsHotel', async (req, res) => {
-  const { forename, surname, people, checkInDate, checkOutDate, user} = req.body;
+  const { forename, surname, people, checkInDate, checkOutDate, user } = req.body;
 
   // Validate incoming data
   if (!forename || !surname || !people || !checkInDate || !checkOutDate) {
@@ -50,10 +51,11 @@ app.post('/api/bookingsHotel', async (req, res) => {
 });
 
 app.post('/api/bookingsZoo', async (req, res) => {
-  const { forename, surname, adults, children, date, user} = req.body;
+  const { forename, surname, adults, children, date } = req.body;
 
   // Validate incoming data
-  if (!forename || !surname || !adults || !children || !date) {
+  if (!forename || !surname || adults === undefined || children === undefined || !date) {
+    console.log('Validation Failed:', { forename, surname, adults, children, date });
     return res.status(400).json({ message: 'All fields are required!' });
   }
 
@@ -62,26 +64,25 @@ app.post('/api/bookingsZoo', async (req, res) => {
     surname,
     adults,
     children,
-    date,
-    user
+    date // Store date as a string
   });
 
   try {
     const savedBookingZoo = await newBookingZoo.save();
     res.status(201).json(savedBookingZoo);
   } catch (err) {
+    console.error('Error Saving Booking:', err);
     res.status(400).json({ message: err.message });
   }
 });
 
+
 // Router for users
-const BookingZoo = require('./models/bookingZooSchema.models');
 const usersRouter = require('./routes/authUser');
 const bookingsRouter = require('./routes/bookings');
 
 app.use('/users', usersRouter);
-app.use('/bookings', bookingsRouter)
-
+app.use('/bookings', bookingsRouter);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

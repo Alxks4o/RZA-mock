@@ -28,3 +28,15 @@
     }
   }
 
+/* CustomTabs.css */
+.custom-tab {
+  color: rgb(0, 0, 0) !important;
+}
+.custom-tab:hover {
+  color: rgb(86, 86, 255) !important;
+}
+.custom-tab.active {
+  color: rgb(56, 103, 255) !important;
+}
+
+

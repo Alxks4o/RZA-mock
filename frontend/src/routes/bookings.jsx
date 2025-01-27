@@ -1,22 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Container, Row, Card, Table} from 'react-bootstrap';
+import { Col, Container, Row, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import axios from 'axios';
 import NavbarComponent from '../components/navbar';
-
+import '../assets/styles.css'
 function Bookings() {
     const [isLoaded, setisLoaded] = useState(false);
-    const [bookings, setBookings] = useState([]);
+    const [bookingsHotel, setBookingsHotel] = useState([]);
+    const [bookingsZoo, setBookingsZoo] = useState([]);
+    const [key, setKey] = useState('table1');
 
     useEffect(() => {
         axios
             .get('http://127.0.0.1:3001/bookings',)
             .then((res) => {
-                setBookings(res.data);
+                setBookingsHotel(res.data);
                 setisLoaded(true);
             })
             .catch((error) => console.log(error));
     }, []);
+
+    useEffect(() => {
+        axios
+            .get('http://127.0.0.1:3001/bookings/zoo',)
+            .then((res) => {
+                console.log(res.data)
+                setBookingsZoo(res.data);
+                setisLoaded(true);
+            })
+            .catch((error) => console.log(error));
+    }, []);
+
 
     if (isLoaded) {
         return (
@@ -24,7 +38,8 @@ function Bookings() {
                 <NavbarComponent />
                 <Container>
                     <Card>
-
+                    <Tabs id="dual-table-tabs" activeKey={key} onSelect={(k) => setKey(k)}>
+                    <Tab eventKey="table1" title="Hotel Bookings" tabClassName='custom-tab'>
                     <Table striped>
                         <thead 
                     >
@@ -38,7 +53,7 @@ function Bookings() {
                         </thead>
                         <tbody>
                             {
-                                bookings.map(booking => (
+                                bookingsHotel.map(booking => (
                                     <tr key={booking._id}>
                                         <td>{booking.forename}</td>
                                         <td>{booking.surname}</td>
@@ -54,7 +69,43 @@ function Bookings() {
                             }                            
                         </tbody>
                         </Table>
-                    </Card>
+                        </Tab>
+                
+                        
+                        <Tab eventKey="table2" title="Zoo Tickets" tabClassName='custom-tab'>
+
+                        <Table striped>
+                        <thead 
+                    >
+                            <tr>
+                                <th>Forename</th>
+                                <th>Surname</th>
+                                <th style={{}}>Adults</th>                                    
+                                <th style={{}}>Children</th>
+                                <th style={{}}>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                bookingsZoo.map(bookingzoo => (
+                                    <tr key={bookingzoo._id}>
+                                        <td>{bookingzoo.forename}</td>
+                                        <td>{bookingzoo.surname}</td>
+                                        <td>{bookingzoo.adults}</td>
+                                        <td>{bookingzoo.children}</td>
+                                        <td>{bookingzoo.date}</td>
+                                        <td>
+                                                                                
+                                            
+                                        </td>
+                                    </tr>
+                                ))
+                            }                            
+                        </tbody>
+                        </Table>
+                        </Tab>
+                        </Tabs>
+                        </Card>
                     </Container>  
             </>
         );

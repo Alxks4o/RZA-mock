@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Alert,
@@ -86,8 +86,11 @@ export default function Register(){
                                             <Form.Control onChange={handleChange} type='password' name='repeatPassword' placeholder='Enter Password' required />
                                         </Form.Group>
 
-                                        <Button variant='primary' type='submit'>
+                                        <Button variant='primary' type='submit' style={{margin:'1rem', marginLeft:'0'}}>
                                             Submit
+                                        </Button>
+                                        <Button variant='success' type='submit' href='/login' style={{margin:'1rem'}}>
+                                             Go to Login
                                         </Button>
                                     </Form>
                                 </Card.Text>

@@ -4,18 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from '../components/navbar';
 import '../assets/styles.css'
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 function BookingsZoo() {
-  const userid = Cookies.get('token');
+
 
   const [formData, setFormData] = useState({
     forename: '',
     surname: '',
     children:'',
     adults:'',
-    date:'',
-    user:''
+    date:''
   });
   
   
@@ -41,8 +39,7 @@ function BookingsZoo() {
         ...formData,
         adults: Number(formData.adults), // Convert to number
         children: Number(formData.children), // Convert to number
-        date: new Date(formData.date), // Ensure date is properly set
-        user: userid 
+        date: formData.date // Keep date as a string
       };
     
       try {
@@ -56,6 +53,8 @@ function BookingsZoo() {
         console.error('There was an error saving the booking!', error);
       }
     };
+    
+    
     
   
 

@@ -20,10 +20,6 @@ const bookingZooSchema = new mongoose.Schema({
     date: {
         type:String,
         required:true
-    },
-    user: {
-        type:String,
-        required:true
     }
 });
 

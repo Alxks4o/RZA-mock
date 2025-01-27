@@ -50,6 +50,7 @@ export default function Login(){
     
     return(
         <>
+            <div className='d-flex align-items-center justify-content-center vh-100'>
             <Container>
                 <Row>
                     <Col xs='2'></Col>
@@ -75,8 +76,11 @@ export default function Login(){
                                             <Form.Control onChange={handleChange} type='password' name='password' placeholder='Enter Password' required />
                                         </Form.Group>
 
-                                        <Button variant='primary' type='submit'>
+                                        <Button variant='primary' type='submit' style={{margin:'1rem', marginLeft:'0'}}>
                                             Submit
+                                        </Button>     
+                                        <Button variant='success' href='/register' style={{margin:'1rem'}}>
+                                            Register
                                         </Button>
                                     </Form>
                                 </Card.Text>
@@ -86,6 +90,7 @@ export default function Login(){
                     <Col xs='2'></Col>
                 </Row>
             </Container>
+            </div>
         </>
     )
 }

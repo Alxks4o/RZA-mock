@@ -21,6 +21,22 @@ router.get('/', async function(req,res,next){
     }
 });
 
+router.get('/zoo', async function(req,res,next){
+    try{
+        const client = new MongoClient(databaseLink);
+        const database = client.db('RZA');
+        const collection = database.collection('bookingzoos');
+
+        const bookings = await collection.find().toArray();
+
+        res.json(bookings)
+
+        client.close();
+    }catch{
+        res.status(500).json({error:"Could not load bookings"})
+    }
+});
+
 router.get('/:booking', async function(req,res,next){
     try{
         var bookingid = req.params.booking;
