@@ -13,7 +13,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../assets/styles.css';
-import NavbarComponent from '../components/navbar';
+import NavbarComponent from '../components/navbarFixed';
 
 export default function Login() {
     const [inputs, setInputs] = useState([]);

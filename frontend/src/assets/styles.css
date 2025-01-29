@@ -1,12 +1,3 @@
-/* Background */
-.custom-background {
-    
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-}
-
 /* Navbar */
 .custom-nav {
   display: flex;
@@ -17,12 +8,12 @@
 .blurry-background {
     background: transparent;
     backdrop-filter: blur(5px);
-    border-radius: 20px;
+    border-radius: 50px;
   }
 
 
 .custom-nav .nav-link {
-  color: #000000; /* Black text color */
+  color: #ffffff; /* Black text color */
   padding: 10px;
   float: right;
   padding-right: 16px;

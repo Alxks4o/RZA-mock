@@ -12,7 +12,7 @@ import {
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import NavbarComponent from '../components/navbar';
+import NavbarComponent from '../components/navbarFixed';
 
 export default function Register(){
     

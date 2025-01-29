@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Row, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import axios from 'axios';
-import NavbarComponent from '../components/navbar';
+import NavbarComponent from '../components/navbarFixed';
 import '../assets/styles.css'
 function Bookings() {
     const [isLoaded, setisLoaded] = useState(false);

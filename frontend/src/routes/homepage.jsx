@@ -1,9 +1,9 @@
 import React from 'react';
 import '../assets/styles.css'
-import NavbarComp from '../components/navbar'
+import NavbarComp from '../components/navbarFixed'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
-import NavbarComponent from '../components/navbar';
+import NavbarComponent from '../components/navbarFixed';
 import firstImage from '../assets/images/firstImage.jpg'
 import secondImage from '../assets/images/secondImage.jpg'
 import thirdImage from '../assets/images/seventhImage.jpg'
@@ -19,7 +19,7 @@ const Homepage = () => {
           className="d-block w-100"
           src={firstImage}
           alt="First slide"
-          style={{ height: '93vh', objectFit: 'cover' }}
+          style={{ height: '100vh', objectFit: 'cover' }}
         />
       </Carousel.Item>
       <Carousel.Item>
@@ -27,7 +27,7 @@ const Homepage = () => {
           className="d-block w-100"
           src={secondImage}
           alt="Second slide"
-          style={{ height: '93vh', objectFit: 'cover' }}
+          style={{ height: '100vh', objectFit: 'cover' }}
         />
       </Carousel.Item>
       <Carousel.Item>
@@ -35,7 +35,7 @@ const Homepage = () => {
           className="d-block w-100"
           src={thirdImage}
           alt="Third slide"
-          style={{ height: '93vh', objectFit: 'cover'}}
+          style={{ height: '100vh', objectFit: 'cover'}}
         />
       </Carousel.Item>
     </Carousel>

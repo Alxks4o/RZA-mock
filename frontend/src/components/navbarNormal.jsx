@@ -5,7 +5,7 @@ import { Navbar, Nav} from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../assets/logoNav.png'
+import logo from '../assets/logoNav.svg'
 
 function NavbarComponent() {
 
@@ -32,9 +32,9 @@ function NavbarComponent() {
       
   },[navigate])
   
-
+    
     return (
-      <Navbar expand="lg"className='navbar-line' fixed='top'  className='blurry-background'>        
+      <Navbar expand="lg" className='navbar-line blurry-background'>        
         <Navbar.Brand style={{marginLeft:'45px'}} href="/">
         <img
           src={logo}
@@ -46,7 +46,7 @@ function NavbarComponent() {
         <Nav.Item>
         </Nav.Item>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" style={{border:'solid 2px'}}/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto custom-nav" >
             <Nav.Item>

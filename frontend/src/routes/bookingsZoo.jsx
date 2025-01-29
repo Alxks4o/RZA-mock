@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Card, Container, Row, Col, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from '../components/navbar';
+import NavbarComponent from '../components/navbarFixed';
 import '../assets/styles.css'
 import axios from 'axios';
 
