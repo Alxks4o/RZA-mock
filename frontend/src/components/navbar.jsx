@@ -5,6 +5,7 @@ import { Navbar, Nav} from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import logo from '../assets/logoNav.png'
 
 function NavbarComponent() {
 
@@ -33,13 +34,24 @@ function NavbarComponent() {
   
 
     return (
-      <Navbar expand="lg">        
-        <Navbar.Brand style={{marginLeft:'45px'}} href="/">Riget Zoo Adventures</Navbar.Brand>
+      <Navbar expand="lg"className='navbar-line'>        
+        <Navbar.Brand style={{marginLeft:'45px'}} href="/">
+        <img
+          src={logo}
+          width="200"
+          height="200"
+          className="d-inline-block align-top"
+          alt="Logo"
+        />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto custom-nav" >
             <Nav.Item>
               <Nav.Link href="/aboutus">About us</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/aboutus">Animals</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="/bookingszoo">Zoo Tickets</Nav.Link>

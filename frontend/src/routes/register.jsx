@@ -12,6 +12,7 @@ import {
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import NavbarComponent from '../components/navbar';
 
 export default function Register(){
     
@@ -55,11 +56,12 @@ export default function Register(){
 
     return(
         <>
+        <NavbarComponent/>
         <div className='d-flex align-items-center justify-content-center vh-100'>
             <Container>
                 <Row>
-                    <Col xs='3'></Col>
-                    <Col xs='6'>
+                    <Col xs='2'></Col>
+                    <Col xs='8'>
                         <Alert show={show} onClose={() => setShow(false)} variant='danger' dismissible>
                             <Alert.Heading>Oh no!</Alert.Heading>
                             <p>
@@ -86,10 +88,10 @@ export default function Register(){
                                             <Form.Control onChange={handleChange} type='password' name='repeatPassword' placeholder='Enter Password' required />
                                         </Form.Group>
 
-                                        <Button variant='primary' type='submit' style={{margin:'1rem', marginLeft:'0'}}>
-                                            Submit
-                                        </Button>
-                                        <Button variant='success' type='submit' href='/login' style={{margin:'1rem'}}>
+                                        <Button variant='primary' type='submit' style={{width:'100%',marginTop:'1rem'}}>
+                                            Register
+                                        </Button> <br />
+                                        <Button variant='success' type='submit' href='/login' className="custom-button" style={{width:'100%',marginTop:'0.5rem'}}>
                                              Go to Login
                                         </Button>
                                     </Form>

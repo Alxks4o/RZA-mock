@@ -12,7 +12,8 @@ import {
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import '../assets/styles.css'
+import NavbarComponent from '../components/navbar';
 
 export default function Login(){
     const [inputs, setInputs] = useState([]);
@@ -50,6 +51,7 @@ export default function Login(){
     
     return(
         <>
+            <NavbarComponent/>
             <div className='d-flex align-items-center justify-content-center vh-100'>
             <Container>
                 <Row>
@@ -76,11 +78,11 @@ export default function Login(){
                                             <Form.Control onChange={handleChange} type='password' name='password' placeholder='Enter Password' required />
                                         </Form.Group>
 
-                                        <Button variant='primary' type='submit' style={{margin:'1rem', marginLeft:'0'}}>
-                                            Submit
-                                        </Button>     
-                                        <Button variant='success' href='/register' style={{margin:'1rem'}}>
-                                            Register
+                                        <Button variant='primary' type='submit' className='custom-button2' style={{width:'100%', marginTop:'1rem'}}>
+                                            Login
+                                        </Button>  <br />   
+                                        <Button variant='success' href='/register' className="custom-button" style={{width:'100%',marginTop:'0.5rem'}}>
+                                            Go to Register
                                         </Button>
                                     </Form>
                                 </Card.Text>
