@@ -34,7 +34,7 @@ function NavbarComponent() {
   
 
     return (
-      <Navbar expand="lg"className='navbar-line'>        
+      <Navbar expand="lg"className='navbar-line' fixed='top'  className='blurry-background'>        
         <Navbar.Brand style={{marginLeft:'45px'}} href="/">
         <img
           src={logo}
@@ -43,6 +43,8 @@ function NavbarComponent() {
           className="d-inline-block align-top"
           alt="Logo"
         />
+        <Nav.Item>
+        </Nav.Item>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

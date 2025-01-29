@@ -4,38 +4,32 @@ import { Col, Container, Row, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import axios from 'axios';
 import NavbarComponent from '../components/navbar';
 import '../assets/styles.css'
-import Cookies from 'js-cookie';
-
 function Bookings() {
     const [isLoaded, setisLoaded] = useState(false);
     const [bookingsHotel, setBookingsHotel] = useState([]);
-    // const [bookingsZoo, setBookingsZoo] = useState([]);
+    const [bookingsZoo, setBookingsZoo] = useState([]);
     const [key, setKey] = useState('table1');
 
     useEffect(() => {
-        const userid = Cookies.get('token');
-        if (userid) {
-            axios
-                .get(`http://127.0.0.1:3001/bookings?user=${userid}`, { withCredentials: true })
-                .then((res) => {
-                    setBookingsHotel(res.data);
-                    setisLoaded(true);
-                })
-                .catch((error) => console.log(error));
-        } else {
-            console.error('Token is undefined');
-        }
+        axios
+            .get('http://127.0.0.1:3001/bookings',)
+            .then((res) => {
+                setBookingsHotel(res.data);
+                setisLoaded(true);
+            })
+            .catch((error) => console.log(error));
     }, []);
 
-    // useEffect(() => {
-    //     axios
-    //         .get('http://127.0.0.1:3001/bookings/zoo',)
-    //         .then((res) => {
-    //             setBookingsZoo(res.data);
-    //             setisLoaded(true);
-    //         })
-    //         .catch((error) => console.log(error));
-    // }, []);
+    useEffect(() => {
+        axios
+            .get('http://127.0.0.1:3001/bookings/zoo',)
+            .then((res) => {
+                console.log(res.data)
+                setBookingsZoo(res.data);
+                setisLoaded(true);
+            })
+            .catch((error) => console.log(error));
+    }, []);
 
 
     if (isLoaded) {
