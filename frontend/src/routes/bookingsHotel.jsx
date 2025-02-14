@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Card, Container, Row, Col, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from '../components/navbarFixed';
+import NavbarComponent from '../components/navbarNormal';
 import '../assets/styles.css'
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -64,7 +64,7 @@ function BookingsHotel() {
   return (
     <>
     <NavbarComponent/>
-    <Container>
+    <Container fluid>
       <Row className="justify-content-md-center">
         <Col md="5">
           <Card style={{ marginTop: '50px' }}>
