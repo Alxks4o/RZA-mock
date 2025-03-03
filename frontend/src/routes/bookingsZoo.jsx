@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Card, Container, Row, Col, InputGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComponent from '../components/navbarNormal';
+import NavbarComponentNormal from '../components/navbarNormal';
 import '../assets/styles.css'
 import axios from 'axios';
 
@@ -60,7 +60,7 @@ function BookingsZoo() {
 
   return (
     <>
-    <NavbarComponent/>
+    <NavbarComponentNormal/>
     <Container fluid>
       <Row className="justify-content-md-center">
         <Col md="5">

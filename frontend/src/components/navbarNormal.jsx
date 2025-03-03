@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../assets/logoNav.svg'
 
-function NavbarComponent() {
+function NavbarComponentNormal() {
 
   const [isLoaded, setisLoaded] = useState(false)
   const [user, setUser] = useState("")
@@ -34,7 +34,7 @@ function NavbarComponent() {
   
     
     return (
-      <Navbar expand="lg" className='navbar-line blurry-background'>        
+      <Navbar expand="lg" sticky='top' className='navbar-line blurry-background'>        
         <Navbar.Brand style={{marginLeft:'45px'}} href="/">
         <img
           src={logo}
@@ -74,5 +74,5 @@ function NavbarComponent() {
   }
 
   
-export default NavbarComponent;
+export default NavbarComponentNormal;
   

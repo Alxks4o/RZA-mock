@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Row, Card, Table, Tabs, Tab} from 'react-bootstrap';
 import axios from 'axios';
-import NavbarComponent from '../components/navbarFixed';
+import NavbarComponentNormal from '../components/navbarNormal';
 import '../assets/styles.css'
 function Bookings() {
     const [isLoaded, setisLoaded] = useState(false);
@@ -35,7 +35,7 @@ function Bookings() {
     if (isLoaded) {
         return (
             <>
-                <NavbarComponent />
+                <NavbarComponentNormal />
                 <Container style={{marginTop:'5rem'}}>
                 <Row>
                 <Col xs='2'></Col>
@@ -63,11 +63,6 @@ function Bookings() {
                                             <td>{booking.people}</td>
                                             <td>{(booking.checkInDate).split("T")[0]}</td>
                                             <td>{(booking.checkOutDate).split("T")[0]}</td>
-                                            <td>{booking.user}</td>
-                                            <td>
-                                                                                    
-                                                
-                                            </td>
                                         </tr>
                                     ))
                                 }                            
